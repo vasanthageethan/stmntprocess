@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Upload CSV File </title>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h1>Account Statement</h1>
+            <!--display error if any-->
+            <div class="alert alert-danger" role="alert" th:if="${!status}">
+                <strong>Error:</strong>
+                <span th:text="${message}"></span>
+            </div>
+
+            <!--display users list-->
+            <table class="table table-striped" th:if="${status}">
+                <THEAD>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Withdraw</th>
+                    <th scope="col">Credit</th>
+                    <th scope="col">Age</th>
+                </tr>
+                </THEAD>
+                <tbody>
+                <tr th:each="user, i : ${users}">
+                    <th scope="row" th:text="${i.index + 1}"></th>
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.description}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.withdraw}"></td>
+                    <td th:text="${user.credit}"></td>
+                    <td th:text="${user.age}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
